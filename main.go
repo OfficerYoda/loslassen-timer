@@ -15,7 +15,7 @@ import (
 const (
 	apiEndpoint = "https://api.dhbw.app/rapla/lectures/KA-TINF25B6/events"
 	cacheFile   = "cache.json"
-	bgWhite     = "#[bg=lightgrey,fg=black]"
+	bgWhite     = "#[bg=lightgrey,fg=color237]"
 	bgReset     = "#[bg=default,fg=lightgrey]"
 	fullBlock   = "█"
 	emptyBlock  = " "
