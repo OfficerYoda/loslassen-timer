@@ -16,7 +16,7 @@ const (
 	apiEndpoint = "https://api.dhbw.app/rapla/lectures/KA-TINF25B6/events"
 	cacheFile   = "cache.json"
 	bgWhite     = "#[bg=lightgrey,fg=color237]"
-	bgReset     = "#[bg=default,fg=lightgrey]"
+	bgReset     = "#[bg=color250,fg=lightgrey]"
 	fullBlock   = "█"
 	emptyBlock  = " "
 	suffix      = "#[nobold,fg=colour242] |"
@@ -111,7 +111,7 @@ func printBar(percent float64, size int, lecture Lecture) {
 	loc, _ := time.LoadLocation("Europe/Berlin")
 	lectureEndTime := lecture.EndTime.In(loc).Format("15:04")
 
-	output.WriteString("[")
+	output.WriteString("[#[bg=color238]")
 
 	fullBlocks := int(percent * float64(size) / 100.0)
 	exactFullBlocks := percent / 100.0 * float64(size)
@@ -156,8 +156,8 @@ func printBar(percent float64, size int, lecture Lecture) {
 		}
 	}
 
-	output.WriteString("]#[nobold]")
-	fmt.Fprintf(&output, " %02.0f%%", percent)
+	output.WriteString("#[bg=default]]#[nobold]")
+	fmt.Fprintf(&output, " %.0f%%", percent)
 	output.WriteString(suffix)
 	fmt.Println(output.String())
 }
