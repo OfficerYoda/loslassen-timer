@@ -15,7 +15,7 @@ import (
 const (
 	apiEndpoint = "https://api.dhbw.app/rapla/lectures/KA-TINF25B6/events"
 	bgWhite     = "#[bg=lightgrey,fg=color237]"
-	bgReset     = "#[bg=color250,fg=lightgrey]"
+	bgReset     = "#[bg=color238,fg=lightgrey]"
 	fullBlock   = "█"
 	emptyBlock  = " "
 	suffix      = "#[nobold,fg=colour242] |"
