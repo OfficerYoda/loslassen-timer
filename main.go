@@ -19,6 +19,7 @@ const (
 	bgReset     = "#[bg=default,fg=lightgrey]"
 	fullBlock   = "█"
 	emptyBlock  = " "
+	suffix      = "#[nobold,fg=colour242] |"
 )
 
 var (
@@ -88,12 +89,12 @@ func printTimer(lecture Lecture, size int) {
 	now := time.Now()
 	if now.Before(lecture.StartTime) {
 		minutesUntilStart := int(lecture.StartTime.Sub(now).Minutes())
-		if minutesUntilStart <= 15 {
+		if minutesUntilStart <= 30 {
 			lectureName, ok := courseAbbreviations[lecture.Name]
 			if !ok {
 				lectureName = lecture.Name
 			}
-			fmt.Printf("%s in %dm\n", lectureName, minutesUntilStart)
+			fmt.Printf("%s in %dmin%s", lectureName, minutesUntilStart, suffix)
 		}
 	} else {
 		totalTime := lecture.EndTime.Sub(lecture.StartTime)
@@ -157,6 +158,7 @@ func printBar(percent float64, size int, lecture Lecture) {
 
 	output.WriteString("]#[nobold]")
 	fmt.Fprintf(&output, " %02.0f%%", percent)
+	output.WriteString(suffix)
 	fmt.Println(output.String())
 }
 
