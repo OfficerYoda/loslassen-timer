@@ -107,12 +107,10 @@ func printTimer(lecture Lecture, size int) {
 func printBar(percent float64, size int, lecture Lecture) {
 	var output strings.Builder
 
-	lectureNameAbreviation := courseAbbreviations[lecture.Name]
 	loc, _ := time.LoadLocation("Europe/Berlin")
 	lectureEndTime := lecture.EndTime.In(loc).Format("15:04")
 
-	output.WriteString(lectureNameAbreviation)
-	output.WriteString(" [")
+	output.WriteString("[")
 
 	fullBlocks := int(percent * float64(size) / 100.0)
 	exactFullBlocks := percent / 100.0 * float64(size)
@@ -157,7 +155,7 @@ func printBar(percent float64, size int, lecture Lecture) {
 		}
 	}
 
-	output.WriteString("]")
+	output.WriteString("]#[nobold]")
 	fmt.Fprintf(&output, " %02.0f%%", percent)
 	fmt.Println(output.String())
 }
