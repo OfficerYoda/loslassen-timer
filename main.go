@@ -119,7 +119,7 @@ func printBar(percent float64, size int, lecture Lecture) {
 	remainder := exactFullBlocks - float64(fullBlocks)
 
 	if size-fullBlocks > len(lectureEndTime) {
-		// Write Time at the end of the bar
+		// Write Time at the end of the empty bar
 		for range fullBlocks {
 			output.WriteString(fullBlock)
 		}
@@ -136,14 +136,15 @@ func printBar(percent float64, size int, lecture Lecture) {
 
 		output.WriteString(lectureEndTime)
 	} else {
-		// Write Time at the beginning of the bar
-		output.WriteString(bgWhite)
-		output.WriteString(lectureEndTime)
-		output.WriteString(bgReset)
+		// Write Time at the end of the full bar
 
 		for range fullBlocks - len(lectureEndTime) {
 			output.WriteString(fullBlock)
 		}
+
+		output.WriteString(bgWhite)
+		output.WriteString(lectureEndTime)
+		output.WriteString(bgReset)
 
 		if fullBlocks < size {
 			index := int(remainder * float64(len(blocks)))
