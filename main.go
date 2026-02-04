@@ -14,7 +14,6 @@ import (
 
 const (
 	apiEndpoint = "https://api.dhbw.app/rapla/lectures/KA-TINF25B6/events"
-	cacheFile   = "cache.json"
 	bgWhite     = "#[bg=lightgrey,fg=color237]"
 	bgReset     = "#[bg=color250,fg=lightgrey]"
 	fullBlock   = "█"
@@ -23,6 +22,7 @@ const (
 )
 
 var (
+	cacheFile           = os.ExpandEnv("$HOME/dev/go/loslassen.timer/cache.json")
 	blocks              = [...]string{" ", "▏", "▎", "▍", "▌", "▋", "▊", "▉", "█"}
 	courseAbbreviations = map[string]string{
 		"Algorithm and complexity":            "ALGO",
