@@ -88,7 +88,7 @@ func getNextEndingLecture(sortedLecture []Lecture) Lecture {
 func printTimer(lecture Lecture, size int) {
 	now := time.Now()
 	if now.Before(lecture.StartTime) {
-		minutesUntilStart := int(lecture.StartTime.Sub(now).Minutes())
+		minutesUntilStart := int(lecture.StartTime.Sub(now).Minutes()) + 1 // +1 to "round up"
 		if minutesUntilStart <= 30 {
 			lectureName, ok := courseAbbreviations[lecture.Name]
 			if !ok {
